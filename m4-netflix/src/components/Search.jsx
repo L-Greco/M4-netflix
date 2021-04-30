@@ -1,5 +1,5 @@
 import React from "react"
-import {Form,Button,FormControl} from "react-bootstrap"
+import {Form,Button,FormControl,Spinner} from "react-bootstrap"
 import Display from "./Display"
 import MainContainer from "./MainContainer"
 import harrypotter from "./harrypotter.json"
@@ -10,7 +10,8 @@ class Search extends React.Component {
     state = {
         query:"" ,
         queryError:"",
-        selected:[]
+        selected:[],
+        isLoading:false
     }
 
     
@@ -19,11 +20,13 @@ class Search extends React.Component {
     
 
      loadMovies = async function () {
+        this.setState({isLoading:true})
           let endpoint = "http://www.omdbapi.com/?apikey=66d58891&"
           let query = this.state.query
           let endpointQuery = "s="+query.replace(" ","%20")
           try {
               let response = await fetch( endpoint+endpointQuery)
+              
                if  (response.ok) {
                 console.log("Response is ok!!")
                 let data = await response.json()
@@ -33,6 +36,7 @@ class Search extends React.Component {
 
                      this.setState({selected:data.Search})
                 console.log(this.state.selected)
+                this.setState({isLoading:false})
                 } else { this.setState({queryError:data.Error}) 
                         console.log(this.state.queryError)
                 }
@@ -52,6 +56,11 @@ class Search extends React.Component {
          <Form inline>
             <FormControl type="text" placeholder="Search" value={this.state.query} onChange={ e => this.setState({query: e.target.value})} className=" mr-sm-2" />
         <   Button type="button" onClick={ e => this.loadMovies()}> Search </Button>
+      { this.state.isLoading && <div className= "ml-2">
+        <Spinner className="mx-1" animation="grow" variant= "danger" />
+         <Spinner className="mx-1" animation="grow" variant="danger" />
+        <Spinner className="mx-1" animation="grow" variant= "danger" />
+        </div>}
          </Form>
          <Display selected={this.state.selected.sort((a,b)=>a.Year - b.Year)} queryError={this.state.queryError}/>
 
