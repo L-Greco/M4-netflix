@@ -14,9 +14,9 @@ class MyCommentArea extends React.Component {
         return <div className="flex-column d-flex">
 
             
-                   
+                   <h1>hello kostas</h1>
 
-            <MyCommentList />
+            <MyCommentList imdbID={this.props.imdbID} />
             {/* <MyAddComment book={this.props.book} refresh={() => this.setState({})}/>
              */}
         </div>
