@@ -11,10 +11,12 @@ class Display extends React.Component {
         return <>
            <div className="container-fluid">
             <Row>
-        
+            {console.log(this.props.selected)}
 
                 {
+                    
                     this.props.selected.map((film) => {
+                        
                         return (<div key={film.imdbID} className="col-md-2 m-1">
                                 <span class="text-truncate">{film.name}</span>
                                 <img height="250px" class="d-block w-80" src={film.Poster} />
@@ -24,6 +26,7 @@ class Display extends React.Component {
                         
                                     
                                     })
+
 
                 }
 

@@ -13,6 +13,11 @@ class Search extends React.Component {
         selected:[]
     }
 
+    
+
+        
+    
+
      loadMovies = async function () {
           let endpoint = "http://www.omdbapi.com/?apikey=66d58891&"
           let query = this.state.query
@@ -24,6 +29,8 @@ class Search extends React.Component {
                 let data = await response.json()
                 console.log(data)
                 if (data.Search){
+                    
+
                      this.setState({selected:data.Search})
                 console.log(this.state.selected)
                 } else { this.setState({queryError:data.Error}) 
@@ -39,14 +46,17 @@ class Search extends React.Component {
 
     render() {
  return <>
+
+      
  
          <Form inline>
             <FormControl type="text" placeholder="Search" value={this.state.query} onChange={ e => this.setState({query: e.target.value})} className=" mr-sm-2" />
         <   Button type="button" onClick={ e => this.loadMovies()}> Search </Button>
          </Form>
-         <Display selected={this.state.selected} queryError={this.state.queryError}/>
+         <Display selected={this.state.selected.sort((a,b)=>a.Year - b.Year)} queryError={this.state.queryError}/>
 
          {(this.state.selected.length <=0) && <MainContainer films={harrypotter}/>}
+         
       </>
     }
 }
