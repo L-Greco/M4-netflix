@@ -65,11 +65,14 @@ class Search extends React.Component {
             </div>
           )}
         </Form>
-        <Display
-          selected={this.state.selected.sort((a, b) => a.Year - b.Year)}
-          queryError={this.state.queryError}
-        />
 
+        {!this.state.queryError && (
+          <Display
+            selected={this.state.selected.sort((a, b) => a.Year - b.Year)}
+            queryError={this.state.queryError}
+          />
+        )}
+        {this.state.queryError && <h1> {this.state.queryError}</h1>}
         {this.state.selected.length <= 0 && (
           <MainContainer films={harrypotter} />
         )}
