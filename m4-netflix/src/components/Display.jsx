@@ -7,7 +7,6 @@ class Display extends React.Component {
       <>
         <div className="container-fluid">
           <Row>
-            {this.props.queryError && <h1>No film found!! </h1>}
             {this.props.selected.map((film) => {
               return (
                 <div key={film.imdbID} className="col-md-2 m-1">
