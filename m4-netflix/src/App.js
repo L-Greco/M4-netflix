@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import Search from "./components/Search"
 import './App.css';
 import NavBar from '../src/components/NavBar'
 import Footer from "./components/Footer"
