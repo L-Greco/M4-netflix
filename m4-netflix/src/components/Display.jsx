@@ -1,5 +1,5 @@
 import React from "react"
-
+import { Container, Row} from "react-bootstrap"
 
 
 class Display extends React.Component {
@@ -9,11 +9,17 @@ class Display extends React.Component {
     render() {
 
         return <>
-
-            <div className="gallery-wrapper">
+           <div className="container-fluid">
+            <Row>
+        
 
                 {
-                    this.props.array.map((film) => {
+                    this.props.selected.map((film) => {
+                        return (<div key={film.imdbID} className="col-md-2 m-1">
+                                <span class="text-truncate">{film.name}</span>
+                                <img height="250px" class="d-block w-80" src={film.Poster} />
+                                <p></p>
+                                </div>)
 
                         
                                     
@@ -22,10 +28,8 @@ class Display extends React.Component {
                 }
 
 
-
-
+            </Row>
             </div>
-
 
         </>
     }

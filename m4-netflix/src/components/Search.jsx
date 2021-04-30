@@ -1,5 +1,10 @@
 import React from "react"
 import {Form,Button,FormControl} from "react-bootstrap"
+import Display from "./Display"
+import MainContainer from "./MainContainer"
+import harrypotter from "./harrypotter.json"
+
+
 
 class Search extends React.Component {
     state = {
@@ -39,7 +44,9 @@ class Search extends React.Component {
             <FormControl type="text" placeholder="Search" value={this.state.query} onChange={ e => this.setState({query: e.target.value})} className=" mr-sm-2" />
         <   Button type="button" onClick={ e => this.loadMovies()}> Search </Button>
          </Form>
-         {/* <Display selected={this.state.selected} queryError={this.state.queryError} /> */}
+         <Display selected={this.state.selected} queryError={this.state.queryError}/>
+
+         {(this.state.selected.length <=0) && <MainContainer films={harrypotter}/>}
       </>
     }
 }
