@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Row } from "react-bootstrap";
 import { Form, Button, FormControl, Spinner } from "react-bootstrap";
 import MyCommentArea from "../components/MyCommentArea"
+import MyCommentList from "../components/MyCommentList"
 
 
 
@@ -105,7 +106,7 @@ class Display extends React.Component {
                   src={"https://via.placeholder.com/150"}
                 /> }
                   <p>{film.Title}</p>
-                  <MyCommentArea imbdID ={film.imdbID}/>
+                  <MyCommentList imdbID ={film.imdbID}/>
                 </div>
               );
             })}

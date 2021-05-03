@@ -7,6 +7,7 @@ class MyCommentList extends React.Component {
     state = {
         comments: []
     }
+   
 
 
     componentDidMount = () => {
@@ -14,12 +15,15 @@ class MyCommentList extends React.Component {
     }
 
     fetchComments = async () => {
+        
+        let id = this.props.imdbID
 
         try {
-            let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.imdbID, {
+            let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + id, {
                 headers: {
                     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgwMDk5OWIxZjBmYjAwMTVkOTE2ZmUiLCJpYXQiOjE2MTk3MDMzNTMsImV4cCI6MTYyMDkxMjk1M30.T78i8o1OCSa9MZ4T1PZgfZUpU25WIlnhXWypzXYfPQ0"
                 }
+               
             })
 
 
@@ -28,6 +32,7 @@ class MyCommentList extends React.Component {
                 let data = await response.json()
                 this.setState({ comments: data })
                 console.log(this.state.comments)
+                console.log(response)
 
 
             }
