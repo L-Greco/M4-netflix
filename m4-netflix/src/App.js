@@ -2,6 +2,7 @@ import Search from "./components/Search"
 import './App.css';
 import NavBar from '../src/components/NavBar'
 import Footer from "./components/Footer"
+import ShowDetail from "./components/ShowDetail"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
 
@@ -12,9 +13,12 @@ function App() {
     <div className="App">
       <Router>
         <NavBar />
-        <Search />
+        {/* <Route component={Search} path="/" exact /> */}
+        {/* <Search /> */}
 
-        <Footer />
+        <Route component={Footer} path="/" exact />
+        {/* <Footer /> */}
+        <Route component={ShowDetail} path="/ShowDetail/:imgId" />
       </Router>
     </div>
   );

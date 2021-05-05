@@ -12,8 +12,14 @@ import NetflixLogo from "../assets/netflix_logo.png";
 import Lens from "../assets/images.png";
 import Bell from "../assets/bell.png";
 import Kids from "../assets/kids_icon.png";
+import Search from "./Search";
+import MainContainer from "./MainContainer";
+import harrypotter from "./harrypotter.json";
 
 class NavBar extends React.Component {
+  state = {
+    selected: false,
+  };
   render() {
     return (
       <>
@@ -66,7 +72,16 @@ class NavBar extends React.Component {
             <ul className="nav justify-content-end">
               <li className="nav-item mt-2">
                 <a href="#">
-                  <img className="img" src={Lens} width={30} />
+                  <img
+                    className="img"
+                    onClick={
+                      this.state.selected
+                        ? () => this.setState({ selected: false })
+                        : () => this.setState({ selected: true })
+                    }
+                    src={Lens}
+                    width={30}
+                  />
                 </a>
                 <div className="btn-group"></div>
               </li>
@@ -126,6 +141,8 @@ class NavBar extends React.Component {
             </ul>
           </div>
         </nav>
+        {this.state.selected && <Search />}
+        {!this.state.selected && <MainContainer films={harrypotter} />}
       </>
     );
   }
