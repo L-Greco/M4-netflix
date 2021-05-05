@@ -15,11 +15,11 @@ class Display extends React.Component {
                     {/* <span className="text-truncate">{film.Title}</span> */}
                     <img
                       height="250px"
+                      style={{ maxWidth: "100%" }}
                       alt={film.Title}
                       className="d-block w-80"
                       src={film.Poster}
                     />
-                    <p></p>
                   </div>
                 );
               })}

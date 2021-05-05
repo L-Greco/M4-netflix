@@ -15,10 +15,10 @@ function App() {
         <NavBar />
         {/* <Route component={Search} path="/" exact /> */}
         {/* <Search /> */}
-
+        {/* <ShowDetail /> */}
         <Route component={Footer} path="/" exact />
         {/* <Footer /> */}
-        <Route component={ShowDetail} path="/ShowDetail/:imgId" />
+        <Route component={ShowDetail} path="/showDetail/:imgId" />
       </Router>
     </div>
   );
