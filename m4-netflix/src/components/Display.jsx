@@ -7,20 +7,22 @@ class Display extends React.Component {
       <>
         <div className="container-fluid">
           <Row>
-            {this.props.selected.map((film) => {
-              return (
-                <div key={film.imdbID} className="col-md-2 m-1">
-                  <span class="text-truncate">{film.title}</span>
-                  <img
-                    height="250px"
-                    alt={film.title}
-                    className="d-block w-80"
-                    src={film.Poster}
-                  />
-                  <p></p>
-                </div>
-              );
-            })}
+            {this.props.selected
+              .filter((film) => film.Poster !== "N/A")
+              .map((film) => {
+                return (
+                  <div key={film.imdbID} className="col-md-2 m-1">
+                    {/* <span class="text-truncate">{film.Title}</span> */}
+                    <img
+                      height="250px"
+                      alt={film.Title}
+                      className="d-block w-80"
+                      src={film.Poster}
+                    />
+                    <p></p>
+                  </div>
+                );
+              })}
           </Row>
         </div>
       </>
