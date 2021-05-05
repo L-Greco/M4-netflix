@@ -1,22 +1,17 @@
 import React from "react";
-import {  Row } from "react-bootstrap";
-import { withRouter }  from "react-router-dom"
+import { Card, Row } from "react-bootstrap";
 
 class Display extends React.Component {
-
-    
   render() {
-  
     return (
       <>
         <div className="container-fluid">
           <Row>
-            {this.props.selected.map((film, index) => {
+            {this.props.selected.map((film) => {
               return (
-                <div key={index} className="col-md-2 m-1">
+                <div key={film.imdbID} className="col-md-2 m-1">
                   <span class="text-truncate">{film.title}</span>
                   <img
-                    onClick={() => this.props.history.push('./details/' + film.imdbID)}
                     height="250px"
                     alt={film.title}
                     className="d-block w-80"
@@ -33,5 +28,5 @@ class Display extends React.Component {
   }
 }
 
-export default withRouter(Display);
+export default Display;
 

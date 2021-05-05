@@ -2,7 +2,6 @@ import React from "react"
 import Search from "./Search"
 import MyCommentArea from "../components/MyCommentArea"
 import { Card} from "react-bootstrap"
-import { withRouter }  from "react-router-dom"
 
 class MainContainer extends React.Component {
 
@@ -21,12 +20,13 @@ class MainContainer extends React.Component {
                 <div className=" row firstRow">
                     {
 
-                        this.props.films.map((film, index) => {
+                        this.props.films.map(film => {
 
                             return (
-                                <Card.Body key={index}>
-                                <div onClick={() => this.props.history.push('./details/' + film.imdbID)}
-                                 className="col-md-2" style={{display: "inline"}}>
+                                <Card.Body key={film.imdbID}>
+                                <div onClick={() => {this.state.show ? this.setState({show: false}) : this.setState({show: true})
+                                this.setState({imdbID: film.imdbID})
+                                }} className="col-md-2" style={{display: "inline"}}>
                                 <span class="text-truncate">{film.name}</span>
                                 <img 
                                 
@@ -48,4 +48,4 @@ class MainContainer extends React.Component {
     }
 }
 
-export default withRouter(MainContainer)
+export default MainContainer

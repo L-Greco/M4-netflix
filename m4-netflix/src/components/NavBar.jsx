@@ -5,7 +5,6 @@ import NetflixLogo from "../assets/netflix_logo.png"
 import Lens from "../assets/images.png"
 import Bell from "../assets/bell.png"
 import Kids from "../assets/kids_icon.png"
-import { Link, withRouter } from "react-router-dom" 
 
 class NavBar extends React.Component {
 
@@ -26,12 +25,9 @@ class NavBar extends React.Component {
             <li className="nav-item active">
               <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
             </li>
-            <Link to="/series">
             <li className="nav-item">
-              <p className="nav-link">TV Shows</p>
-              
+              <a className="nav-link" href="#tv-shows">TV Shows</a>
             </li>
-              </Link>
             <li className="nav-item">
               <a className="nav-link" href="#movies">Movies</a>
             </li>
@@ -78,4 +74,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default withRouter(NavBar)
+export default NavBar
