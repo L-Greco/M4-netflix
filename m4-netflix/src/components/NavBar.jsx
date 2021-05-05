@@ -1,20 +1,9 @@
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Button,
-  Form,
-  FormControl,
-} from "react-bootstrap";
-import { Component } from "react";
 import React from "react";
 import NetflixLogo from "../assets/netflix_logo.png";
 import Lens from "../assets/images.png";
 import Bell from "../assets/bell.png";
 import Kids from "../assets/kids_icon.png";
-import Search from "./Search";
-import MainContainer from "./MainContainer";
-import harrypotter from "./harrypotter.json";
+import { Link, withRouter } from "react-router-dom";
 
 class NavBar extends React.Component {
   state = {
@@ -27,9 +16,9 @@ class NavBar extends React.Component {
           style={{ zIndex: 1 }}
           className="navbar navbar-expand-lg navbar-dark  bd-navbar"
         >
-          <a className="navbar-brand" href="#">
+          <Link to="/">
             <img className="img" src={NetflixLogo} height={50} />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -44,9 +33,11 @@ class NavBar extends React.Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
-                  Home <span className="sr-only">(current)</span>
-                </a>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <a className="nav-link">
+                    Home <span className="sr-only">(current)</span>
+                  </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#tv-shows">
@@ -72,16 +63,7 @@ class NavBar extends React.Component {
             <ul className="nav justify-content-end">
               <li className="nav-item mt-2">
                 <a href="#">
-                  <img
-                    className="img"
-                    onClick={
-                      this.state.selected
-                        ? () => this.setState({ selected: false })
-                        : () => this.setState({ selected: true })
-                    }
-                    src={Lens}
-                    width={30}
-                  />
+                  <img className="img" src={Lens} width={30} />
                 </a>
                 <div className="btn-group"></div>
               </li>
@@ -141,11 +123,9 @@ class NavBar extends React.Component {
             </ul>
           </div>
         </nav>
-        {this.state.selected && <Search />}
-        {!this.state.selected && <MainContainer films={harrypotter} />}
       </>
     );
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

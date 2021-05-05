@@ -73,9 +73,9 @@ class Search extends React.Component {
           />
         )}
         {this.state.queryError && <h1> {this.state.queryError}</h1>}
-        {/* {this.state.selected.length <= 0 && (
+        {this.state.selected.length <= 0 && (
           <MainContainer films={harrypotter} />
-        )} */}
+        )}
       </>
     );
   }

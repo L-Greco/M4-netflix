@@ -13,12 +13,13 @@ function App() {
     <div className="App">
       <Router>
         <NavBar />
-        {/* <Route component={Search} path="/" exact /> */}
+        <Route component={Search} path="/" exact />
         {/* <Search /> */}
         {/* <ShowDetail /> */}
-        <Route component={Footer} path="/" exact />
-        {/* <Footer /> */}
+
         <Route component={ShowDetail} path="/showDetail/:imgId" />
+
+        <Footer />
       </Router>
     </div>
   );

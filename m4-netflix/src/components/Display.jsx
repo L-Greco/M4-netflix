@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 
 class Display extends React.Component {
   render() {
@@ -19,6 +20,9 @@ class Display extends React.Component {
                       alt={film.Title}
                       className="d-block w-80"
                       src={film.Poster}
+                      onClick={() =>
+                        this.props.history.push("/showDetail/" + film.imdbID)
+                      }
                     />
                   </div>
                 );
@@ -30,4 +34,5 @@ class Display extends React.Component {
   }
 }
 
-export default Display;
+//export default withRouter(Display);
+export default withRouter(Display);
