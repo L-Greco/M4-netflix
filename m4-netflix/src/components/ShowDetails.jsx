@@ -68,7 +68,7 @@ class ShowDetails extends React.Component {
                     <Spinner animation="grow" variant="warning" />
                     <Spinner animation="grow" variant="info" />
                     <Spinner animation="grow" variant="light" />
-                    <Spinner animation="grow" variant="dark" />
+     
                 </>}
                 <div className="d-flex flex-column align-items-center">
                     <h3> {this.state.filmDetails.Title}  </h3>

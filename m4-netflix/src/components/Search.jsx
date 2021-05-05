@@ -51,7 +51,7 @@ class Search extends React.Component {
       <>
         
 <h1>{this.props.title}</h1>
-        <Form className="m-auto" style={{maxWidth: "300px"}}>
+        <Form inline style={{maxWidth: "300px"}}>
           <FormControl
             type="text"
             placeholder="Search"
@@ -59,7 +59,7 @@ class Search extends React.Component {
             onChange={(e) => this.setState({ query: e.target.value })}
             className=" mr-sm-2"
           />
-          <Button className="mt-2" type="button" onClick={(e) => this.loadMovies()}>
+          <Button type="button" onClick={(e) => this.loadMovies()}>
             {" "}
             Search{" "}
           </Button>

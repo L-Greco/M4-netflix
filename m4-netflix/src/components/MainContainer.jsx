@@ -18,7 +18,7 @@ class MainContainer extends React.Component {
             <div className="container-fluid">
                 
                 <h2>Harry Potter</h2>
-                <div className=" row firstRow">
+                <div style={{overflowX: "scroll"}} className="d-flex firstRow">
                     {
 
                         this.props.films.map((film, index) => {
