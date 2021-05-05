@@ -2,7 +2,7 @@ import Search from "./components/Search"
 import './App.css';
 import NavBar from '../src/components/NavBar'
 import Footer from "./components/Footer"
-
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 
 
@@ -10,11 +10,12 @@ import Footer from "./components/Footer"
 function App() {
   return (
     <div className="App">
-      <NavBar/>
-      <Search/>
-    
-      <Footer/>
-      
+      <Router>
+        <NavBar />
+        <Search />
+
+        <Footer />
+      </Router>
     </div>
   );
 }

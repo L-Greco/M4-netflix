@@ -12,7 +12,7 @@ class Display extends React.Component {
               .map((film) => {
                 return (
                   <div key={film.imdbID} className="col-md-2 m-1">
-                    {/* <span class="text-truncate">{film.Title}</span> */}
+                    {/* <span className="text-truncate">{film.Title}</span> */}
                     <img
                       height="250px"
                       alt={film.Title}
