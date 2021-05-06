@@ -1,51 +1,38 @@
-import React from "react"
-import Search from "./Search"
-import MyCommentArea from "../components/MyCommentArea"
-import { Card} from "react-bootstrap"
 
+import React from "react";
+import { withRouter } from "react-router-dom";
 class MainContainer extends React.Component {
+  render() {
+    return (
+      <>
+        <div className="container-fluid">
+          <h2>Harry Potter</h2>
+          <div className=" row justify-content-center ">
+            {this.props.films.map((film) => {
+              return (
+                <div
+                  key={film.imdbID}
+                  className="col-md-2"
+                  style={{ maxWidth: "100%" }}
+                >
+                  <span className="text-truncate">{film.name}</span>
+                  <img
+                    className="d-block w-80"
+                    src={film.Poster}
+                    onClick={() =>
+                      this.props.history.push("/showDetail/" + film.imdbID)
 
-    state = {
-
-        show: false,
-        imdbID: ""
-    }
-    
-    render() {
-
-        return (<>
-            <div className="container-fluid">
-                
-                <h2>Harry Potter</h2>
-                <div className=" row firstRow">
-                    {
-
-                        this.props.films.map(film => {
-
-                            return (
-                                <Card.Body key={film.imdbID}>
-                                <div onClick={() => {this.state.show ? this.setState({show: false}) : this.setState({show: true})
-                                this.setState({imdbID: film.imdbID})
-                                }} className="col-md-2" style={{display: "inline"}}>
-                                <span class="text-truncate">{film.name}</span>
-                                <img 
-                                
-                                height="250px" class="d-block w-80" src={film.Poster} />
-                                <p></p>
-                                {this.state.show && <MyCommentArea imdbID={this.state.imdbID}/>}
-                            </div>
-                            </Card.Body>)
-
-                        })
                     }
+                  />
+                  <p></p>
                 </div>
-
-            </div>
-
-        </>)
-
-
-    }
+              );
+            })}
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
-export default MainContainer
+export default withRouter(MainContainer);

@@ -1,10 +1,7 @@
 import React from "react";
-import { Card, Row } from "react-bootstrap";
-import { Form, Button, FormControl, Spinner } from "react-bootstrap";
-import MyCommentArea from "../components/MyCommentArea"
-import MyCommentList from "../components/MyCommentList"
 
-
+import { Row } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 
 
 class Display extends React.Component {
@@ -89,27 +86,27 @@ class Display extends React.Component {
           )}
         </Form>
         <div className="container-fluid">
-          <Row>
-            {this.state.selected.map((film) => {
-              return (
-                <div key={film.imdbID} className="col-md-2 m-1">
-                  <span class="text-truncate">{film.title}</span>
-                  {!this.props.loading ?<img
-                    height="250px"
-                    alt={film.title}
-                    className="d-block w-80"
-                    src={film.Poster}
-                  /> : <img
-                  height="250px"
-                  alt={film.title}
-                  className="d-block w-80"
-                  src={"https://via.placeholder.com/150"}
-                /> }
-                  <p>{film.Title}</p>
-                  <MyCommentList imdbID ={film.imdbID}/>
-                </div>
-              );
-            })}
+
+          <Row className="justify-content-center">
+            {this.props.selected
+              .filter((film) => film.Poster !== "N/A")
+              .map((film) => {
+                return (
+                  <div key={film.imdbID} className="col-md-2 m-1">
+                    {/* <span className="text-truncate">{film.Title}</span> */}
+                    <img
+                      style={{ maxWidth: "100%" }}
+                      alt={film.Title}
+                      className="d-block w-80"
+                      src={film.Poster}
+                      onClick={() =>
+                        this.props.history.push("/showDetail/" + film.imdbID)
+                      }
+                    />
+                  </div>
+                );
+              })}
+
           </Row>
         </div>
       </>
@@ -117,5 +114,5 @@ class Display extends React.Component {
   }
 }
 
-export default Display;
-
+//export default withRouter(Display);
+export default withRouter(Display);

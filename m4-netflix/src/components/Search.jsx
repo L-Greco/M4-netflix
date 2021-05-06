@@ -53,7 +53,12 @@ class Search extends React.Component {
             onChange={(e) => this.setState({ query: e.target.value })}
             className=" mr-sm-2"
           />
-          <Button type="button" onClick={(e) => this.loadMovies()}>
+          <Button
+            variant="danger"
+            type="button"
+            style={{ color: "white!important}" }}
+            onClick={(e) => this.loadMovies()}
+          >
             {" "}
             Search{" "}
           </Button>
