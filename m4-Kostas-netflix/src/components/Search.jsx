@@ -51,7 +51,7 @@ class Search extends React.Component {
             placeholder="Search"
             value={this.state.query}
             onChange={(e) => this.setState({ query: e.target.value })}
-            className=" mr-sm-2"
+            className="ml-4 mr-sm-2"
           />
           <Button
             variant="danger"
