@@ -6,17 +6,16 @@ class MainContainer extends React.Component {
       <>
         <div className="container-fluid">
           <h2>Harry Potter</h2>
-          <div className=" row firstRow">
+          <div className=" row justify-content-center ">
             {this.props.films.map((film) => {
               return (
                 <div
                   key={film.imdbID}
                   className="col-md-2"
-                  style={{ display: "inline" }}
+                  style={{ maxWidth: "100%" }}
                 >
                   <span className="text-truncate">{film.name}</span>
                   <img
-                    height="250px"
                     className="d-block w-80"
                     src={film.Poster}
                     onClick={() =>

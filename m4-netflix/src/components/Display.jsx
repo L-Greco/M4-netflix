@@ -7,7 +7,7 @@ class Display extends React.Component {
     return (
       <>
         <div className="container-fluid">
-          <Row>
+          <Row className="justify-content-center">
             {this.props.selected
               .filter((film) => film.Poster !== "N/A")
               .map((film) => {
@@ -15,7 +15,6 @@ class Display extends React.Component {
                   <div key={film.imdbID} className="col-md-2 m-1">
                     {/* <span className="text-truncate">{film.Title}</span> */}
                     <img
-                      height="250px"
                       style={{ maxWidth: "100%" }}
                       alt={film.Title}
                       className="d-block w-80"
