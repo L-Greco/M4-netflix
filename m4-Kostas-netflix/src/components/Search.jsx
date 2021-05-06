@@ -1,19 +1,18 @@
 import React from "react";
+import { Form, Button, FormControl, Spinner } from "react-bootstrap";
+import Display from "./Display";
+import MainContainer from "./MainContainer";
+import harrypotter from "./harrypotter.json";
 
-import { Row } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
-
-
-class Display extends React.Component {
-
+class Search extends React.Component {
   state = {
-    query: "lord",
+    query: "",
     queryError: "",
     selected: [],
     isLoading: false,
   };
 
-  fectchData = async function () {
+  loadMovies = async function () {
     this.setState({ isLoading: true });
     let endpoint = "http://www.omdbapi.com/?apikey=66d58891&";
     let query = this.state.query;
@@ -41,27 +40,8 @@ class Display extends React.Component {
     } catch (error) {
       alert(error);
     }
-
-  }
-
-  componentDidMount = async function () {
-    this.fectchData()
-    
   };
 
-  componentDidUpdate = async (previousProps, previousState) => {
-    
-
-    if (previousState.query !== this.state.query) {
-       
-        this.fectchData()
-    }
-}
-
-
-
-
-  load = this.props.loading
   render() {
     return (
       <>
@@ -73,10 +53,15 @@ class Display extends React.Component {
             onChange={(e) => this.setState({ query: e.target.value })}
             className=" mr-sm-2"
           />
-          {/* <Button type="button" onClick={(e) => this.loadMovies()}>
+          <Button
+            variant="danger"
+            type="button"
+            style={{ color: "white!important}" }}
+            onClick={(e) => this.loadMovies()}
+          >
             {" "}
             Search{" "}
-          </Button> */}
+          </Button>
           {this.state.isLoading && (
             <div className="ml-2">
               <Spinner className="mx-1" animation="grow" variant="danger" />
@@ -85,34 +70,22 @@ class Display extends React.Component {
             </div>
           )}
         </Form>
-        <div className="container-fluid">
 
-          <Row className="justify-content-center">
-            {this.props.selected
-              .filter((film) => film.Poster !== "N/A")
-              .map((film) => {
-                return (
-                  <div key={film.imdbID} className="col-md-2 m-1">
-                    {/* <span className="text-truncate">{film.Title}</span> */}
-                    <img
-                      style={{ maxWidth: "100%" }}
-                      alt={film.Title}
-                      className="d-block w-80"
-                      src={film.Poster}
-                      onClick={() =>
-                        this.props.history.push("/showDetail/" + film.imdbID)
-                      }
-                    />
-                  </div>
-                );
-              })}
-
-          </Row>
-        </div>
+        {!this.state.queryError && (
+          <Display
+            selected={this.state.selected.sort((a, b) => a.Year - b.Year)}
+            queryError={this.state.queryError}
+            loading={this.state.isLoading}
+            query={this.state.query}
+          />
+        )}
+        {this.state.queryError && <h1> {this.state.queryError}</h1>}
+        {this.state.selected.length <= 0 && (
+          <MainContainer films={harrypotter} />
+        )}
       </>
     );
   }
 }
 
-//export default withRouter(Display);
-export default withRouter(Display);
+export default Search;
