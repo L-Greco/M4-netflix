@@ -75,6 +75,8 @@ class Search extends React.Component {
           <Display
             selected={this.state.selected.sort((a, b) => a.Year - b.Year)}
             queryError={this.state.queryError}
+            loading = {this.state.isLoading}
+            query = {this.state.query}
           />
         )}
         {this.state.queryError && <h1> {this.state.queryError}</h1>}

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { withRouter } from "react-router-dom";
 class MainContainer extends React.Component {
@@ -20,6 +21,7 @@ class MainContainer extends React.Component {
                     src={film.Poster}
                     onClick={() =>
                       this.props.history.push("/showDetail/" + film.imdbID)
+
                     }
                   />
                   <p></p>
