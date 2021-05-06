@@ -55,9 +55,9 @@ class NavBar extends React.Component {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#my-list">
-                  My List
-                </a>
+                <Link to="/newReg">
+                  <a className="nav-link">New Registration</a>
+                </Link>
               </li>
             </ul>
             <ul className="nav justify-content-end">
